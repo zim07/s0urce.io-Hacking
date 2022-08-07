@@ -34,7 +34,8 @@
         window.addLibrary('https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js');
     }
 
-    // The fastest we can push answers
+    // The fastest we can push answers, in milliseconds
+    // Must be at least at 1000ms
     window.ash47_maxSubmitTime = 1000 * 1;
     window.ash47_bonusDelay = 100;
 
@@ -81,7 +82,7 @@
         }
     };
 
-    // Checks if we are allowed to submit
+    // Checks if we are allowed to submit the word
     window.ash47_canSubmit = function() {
         if(window.ash47_lastSubmission == null) return true;
         var now = new Date();
@@ -104,7 +105,7 @@
         }
     };
 
-    // Do a submission, IF WE ARE ALLOWED
+    // Do a submission, IF WE ALLOWED
     window.ash47_doSubmit = function() {
         // Are we allowed to submit?
         if(window.ash47_canSubmit()) {
@@ -114,7 +115,7 @@
             // Ensure we actually mark us as recently submitted
             window.ash47_didSubmit();
         } else {
-            // Sleep until we are allowed to submit
+            // Wait until we are allowed to submit
             setTimeout(function() {
                 // Do the submit
                 window.ash47_doSubmit();
@@ -144,7 +145,7 @@
 
         // Try to read it
         Tesseract.recognize($('.tool-type-img').get()[0], {
-            // Only allow lowercase and underscore
+            // Only allow lowercase, underscore, 2 and 3
             tessedit_char_whitelist: 'abcdefghijklmnopqrstuvwxyz_23'
         })
             .then(function(result) {
@@ -154,7 +155,7 @@
                 // Did we find something?
                 if(res.length > 0) {
                     // Log what we see
-                    window.ash47_addline('I see: ' + res);
+                    window.ash47_addline('Typing: ' + res);
 
                     // Store the value
                     $('#tool-type-word').val(res);
