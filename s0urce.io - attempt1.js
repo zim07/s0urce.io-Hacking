@@ -1,6 +1,6 @@
 // The delay, in milliseconds
 // 1000 milliseconds = 1 second
-// The delay bust be for at least 100 ms
+// The delay bust be for at least 1000 ms
 var theDelay = 1000 * 1;
 
 function canPwn() {
