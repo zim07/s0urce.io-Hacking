@@ -1,7 +1,7 @@
 # Scripts
 
 ## Auto hack people
- - The script contained in `s0urce.io - attempt<x>.js` will automatically "type" commands to hack people for you.
+ - The script contained in `s0urce.io - attempt<x>.js` will automatically type "commands" to hack people for you.
  - Note that it will not automatically choose a target for you, it isnt fully automated and requires to still have human input.
  - copy the contents of the file into your clipboard.
  - open the website (s0urce.io) in your browser.
